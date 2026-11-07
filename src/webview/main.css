@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* @custom-variant dark (&:where(.dark, .dark *)); */
+@custom-variant dark (@media (prefers-color-scheme: dark));
+
+:root {
+  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --foreground-color: #232935;
+  --icon-color: rgba(35, 41, 53, 0.728);
+  --border-width: 0.5px;
+
+  --sider-bar-bg: color-mix(in srgb, #fff 50%, transparent);
+  --sider-bar-border: color-mix(in srgb, #1f1f1f 10%, transparent);
+
+  font: 13px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+  color: var(--foreground-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --icon-color: rgba(255,255,255, 0.6);
+    --foreground-color: #ABB2BF;
+
+    --sider-bar-bg: color-mix(in srgb, #22252C 75%, transparent);
+    --sider-bar-border: color-mix(in srgb, #fdfbfb 10%, transparent);
+  }
+}
+
+html,
+body {
+  background: transparent;
+  overflow: hidden;
+}

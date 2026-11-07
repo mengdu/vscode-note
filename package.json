@@ -1,0 +1,81 @@
+{
+  "name": "vscode-note",
+  "displayName": "Note",
+  "description": "Note",
+  "publisher": "lanyue",
+  "private": true,
+  "preview": true,
+  "version": "0.1.0",
+  "main": "./dist/extension/main.js",
+  "type": "module",
+  "icon": "media/icon.png",
+  "categories": [
+    "Other"
+  ],
+  "engines": {
+    "vscode": "^1.84.0"
+  },
+  "repository": {
+    "url": "git@github.com:mengdu/vscode-note.git"
+  },
+  "author": "lanyueos@qq.com",
+  "license": "MIT",
+  "activationEvents": [],
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "note.editor",
+        "displayName": "Note Editor",
+        "priority": "default",
+        "selector": [
+          {
+            "filenamePattern": "file:/**/*.note"
+          }
+        ]
+      }
+    ],
+    "languages": [
+      {
+        "id": "note",
+        "aliases": [
+          "Note File"
+        ],
+        "icon": {
+          "dark": "media/icon.svg",
+          "light": "media/icon.svg"
+        },
+        "extensions": [
+          ".note"
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "dev": "vite dev",
+    "build": "tsc -b && vite build",
+    "preview": "vite preview",
+    "pack": "npm run build && vsce package --no-dependencies",
+    "lint": "oxlint"
+  },
+  "dependencies": {
+    "@types/vscode": "^1.145.0",
+    "immer": "^11.2.9",
+    "lodash.debounce": "^4.0.8",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
+    "use-immer": "^0.11.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.5",
+    "@types/lodash.debounce": "^4.0.9",
+    "@types/node": "^24.19.2",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "@types/vscode-webview": "^1.57.5",
+    "@vitejs/plugin-react": "^6.1.2",
+    "oxlint": "^1.90.0",
+    "tailwindcss": "^4.3.5",
+    "typescript": "~7.0.2",
+    "vite": "^8.3.6"
+  }
+}

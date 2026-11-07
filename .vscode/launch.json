@@ -1,0 +1,34 @@
+// A launch configuration that launches the extension inside a new window
+// Use IntelliSense to learn about possible attributes.
+// Hover to view descriptions of existing attributes.
+// For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+{
+	"version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Development",
+      "type": "extensionHost",
+      "request": "launch",
+      "preLaunchTask": "dev-task",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--disable-extension=lanyue.vscode-note"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/extension/**/*.js"
+      ],
+    },
+    {
+      "name": "Preview",
+      "type": "extensionHost",
+      "request": "launch",
+      "args": [
+        "--extensionDevelopmentPath=${workspaceFolder}",
+        "--disable-extension=lanyue.vscode-note"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/dist/extension/**/*.js"
+      ],
+    }
+  ]
+}

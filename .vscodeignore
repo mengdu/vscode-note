@@ -1,0 +1,17 @@
+.vscode/**
+.vscode-test/**
+.gitignore
+syntaxes/**
+examples/**
+src/**
+web/**
+*.vsix
+.oxlintrc.json
+index.html
+tsconfig.json
+tsconfig.app.json
+tsconfig.node.json
+vite.config.ts
+tailwind.config.js
+pnpm-lock.yaml
+package-lock.json
