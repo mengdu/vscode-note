@@ -14,4 +14,6 @@ tsconfig.node.json
 vite.config.ts
 tailwind.config.js
 pnpm-lock.yaml
+pnpm-workspace.yaml
 package-lock.json
+preview.png

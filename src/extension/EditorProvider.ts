@@ -17,9 +17,7 @@ export class CustomTextEditorProvider implements vscode.CustomTextEditorProvider
   constructor (
     private context: vscode.ExtensionContext,
     private Editor: CustomTextEditor
-  ) {
-    console.log('CustomEditorProvider constructor')
-  }
+  ) {}
 
   async resolveCustomTextEditor(
     document: vscode.TextDocument,

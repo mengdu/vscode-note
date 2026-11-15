@@ -3,6 +3,7 @@ import { builtinModules } from 'node:module'
 import { fileURLToPath } from 'node:url'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
+import path from 'node:path'
 
 const resolve = (path: string) => fileURLToPath(new URL(path, import.meta.url))
 
@@ -71,12 +72,18 @@ export default defineConfig({
     backend(),
     tailwindcss(),
   ],
+  base: process.env.NODE_ENV === 'production' ? './' : undefined,
   server: {
     port: 4321,
     strictPort: true,
     cors: true
   },
   build: {
-    outDir: 'dist/webview'
-  }
+    outDir: 'dist/webview',
+  },
+  resolve: {
+    alias: {
+      '@': path.resolve(import.meta.dirname, './src/webview'),
+    },
+  },
 })

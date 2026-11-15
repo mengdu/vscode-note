@@ -1,0 +1,125 @@
+@import "tailwindcss";
+@import './_variables.scss';
+@import './_keyframe-animations.scss';
+
+@custom-variant dark (&:where(.vscode-dark, .vscode-dark *));
+/* @custom-variant dark (@media (prefers-color-scheme: dark)); */
+
+:root {
+  /* --sans: system-ui, 'Segoe UI', Roboto, sans-serif; */
+  --sans: var(--vscode-editor-font-family);
+  --border-width: 0.5px;
+  --editor-button-active-color: #3b82f6;
+
+  /* Shared accent palette, including menus rendered in portals and image handles. */
+  --tt-brand-color-50: #eff6ff;
+  --tt-brand-color-100: #dbeafe;
+  --tt-brand-color-200: #bfdbfe;
+  --tt-brand-color-300: #93c5fd;
+  --tt-brand-color-400: #60a5fa;
+  --tt-brand-color-500: var(--editor-button-active-color);
+  --tt-brand-color-600: #2563eb;
+  --tt-brand-color-700: #1d4ed8;
+  --tt-brand-color-800: #1e40af;
+  --tt-brand-color-900: #1e3a8a;
+  --tt-brand-color-950: #172554;
+
+  --code-syntax-comment: #b9b9b9;
+  --code-syntax-keyword: #ab4f7a;
+  --code-syntax-literal: #ac4f23;
+  --code-syntax-string: #3a843f;
+  --code-syntax-variable: #643cae;
+  --code-syntax-attribute: #b8802b;
+  --code-syntax-name: #1f4e94;
+  --code-syntax-error: #e1a09c;
+
+  font: 14px/145% var(--sans);
+  letter-spacing: 0.18px;
+  color-scheme: light dark;
+}
+
+.vscode-dark {
+  --code-syntax-comment: #4f4f4f;
+  --code-syntax-keyword: #f8a6c8;
+  --code-syntax-literal: #f1a275;
+  --code-syntax-string: #83d197;
+  --code-syntax-variable: #b897f4;
+  --code-syntax-attribute: #f9dc78;
+  --code-syntax-name: #63a8f8;
+  --code-syntax-error: #842c26;
+}
+
+:root,
+.dark,
+.vscode-dark,
+.vscode-high-contrast,
+.vscode-high-contrast-light {
+  --tt-cursor-color: var(--editor-button-active-color);
+  --tt-selection-color: rgb(59 130 246 / 20%);
+}
+
+/* Keep application overrides outside CLI-generated Tiptap components. */
+.editor-menubar .tiptap-toolbar[data-variant="fixed"] {
+  position: sticky;
+  top: 0;
+  height: auto;
+  padding: 0 0.5rem;
+  border-top: 0;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: auto;
+}
+
+.editor-menubar .tiptap-toolbar[data-variant="fixed"] .tiptap-toolbar-group {
+  flex: 0 0 auto;
+}
+
+.editor-menubar .tiptap-button[data-style="ghost"] {
+  --tt-button-active-icon-color: var(--editor-button-active-color);
+  --tt-button-active-icon-color-emphasized: var(--editor-button-active-color);
+}
+
+/* Tiptap's button palette switches on .dark; VS Code uses .vscode-dark. */
+.vscode-dark .editor-menubar .tiptap-button[data-style="ghost"] {
+  --tt-button-default-bg-color: var(--transparent);
+  --tt-button-hover-bg-color: var(--tt-gray-dark-200);
+  --tt-button-active-bg-color: var(--tt-gray-dark-a-100);
+  --tt-button-active-bg-color-emphasized: var(--tt-brand-color-900);
+  --tt-button-active-bg-color-subdued: var(--tt-gray-dark-a-100);
+  --tt-button-active-hover-bg-color: var(--tt-gray-dark-200);
+  --tt-button-active-hover-bg-color-emphasized: var(--tt-brand-color-800);
+  --tt-button-active-hover-bg-color-subdued: var(--tt-gray-dark-a-200);
+  --tt-button-disabled-bg-color: var(--transparent);
+
+  --tt-button-default-text-color: var(--tt-gray-dark-a-600);
+  --tt-button-hover-text-color: var(--tt-gray-dark-a-900);
+  --tt-button-active-text-color: var(--tt-gray-dark-a-900);
+  --tt-button-active-text-color-emphasized: var(--tt-gray-dark-a-900);
+  --tt-button-active-text-color-subdued: var(--tt-gray-dark-a-900);
+  --tt-button-disabled-text-color: var(--tt-gray-dark-a-300);
+
+  --tt-button-default-icon-color: var(--tt-gray-dark-a-600);
+  --tt-button-hover-icon-color: var(--tt-gray-dark-a-900);
+  --tt-button-active-icon-color: var(--editor-button-active-color);
+  --tt-button-active-icon-color-emphasized: var(--editor-button-active-color);
+  --tt-button-active-icon-color-subdued: var(--tt-gray-dark-a-900);
+  --tt-button-disabled-icon-color: var(--tt-gray-dark-a-400);
+
+  --tt-button-default-icon-sub-color: var(--tt-gray-dark-a-300);
+  --tt-button-hover-icon-sub-color: var(--tt-gray-dark-a-400);
+  --tt-button-active-icon-sub-color: var(--tt-gray-dark-a-300);
+  --tt-button-active-icon-sub-color-emphasized: var(--tt-gray-dark-a-400);
+  --tt-button-active-icon-sub-color-subdued: var(--tt-gray-dark-a-300);
+  --tt-button-disabled-icon-sub-color: var(--tt-gray-dark-a-100);
+
+  --tt-button-default-dropdown-arrows-color: var(--tt-gray-dark-a-600);
+  --tt-button-hover-dropdown-arrows-color: var(--tt-gray-dark-a-700);
+  --tt-button-active-dropdown-arrows-color: var(--tt-gray-dark-a-600);
+  --tt-button-active-dropdown-arrows-color-emphasized: var(--tt-gray-dark-a-700);
+  --tt-button-active-dropdown-arrows-color-subdued: var(--tt-gray-dark-a-600);
+  --tt-button-disabled-dropdown-arrows-color: var(--tt-gray-dark-a-400);
+}
+
+.vscode-dark .editor-menubar .tiptap-separator {
+  --tt-link-border-color: var(--tt-gray-dark-a-200);
+}

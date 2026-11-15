@@ -1,0 +1,352 @@
+.ProseMirror {
+  --note-block-gap: 0.65em;
+  --note-list-gap: 0.3em;
+
+  padding: 1.7rem;
+  outline: none;
+  font-size: 1rem;
+  line-height: 1.65;
+  min-height: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  background-color: inherit;
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    color: gray;
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    margin-block: 1.25em 0.5em;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  h1 { font-size: 1.8em; }
+  h2 { font-size: 1.5em; }
+  h3 { font-size: 1.25em; }
+  h4 { font-size: 1.1em; }
+  h5 { font-size: 1em; }
+  h6 { font-size: 0.92em; }
+
+  p, ul, ol, blockquote, pre {
+    margin-block: var(--note-block-gap);
+  }
+
+  p {
+    min-height: 1.65em;
+  }
+
+  ul,
+  ol {
+    padding-inline-start: 1.7em;
+    list-style-position: outside;
+  }
+
+  ul { list-style-type: disc; }
+  ol { list-style-type: decimal; }
+  ul ul { list-style-type: circle; }
+  ul ul ul { list-style-type: square; }
+
+  li {
+    display: list-item;
+    margin-block: var(--note-list-gap);
+
+    > p, > ul, > ol {
+      margin-block: var(--note-list-gap);
+    }
+  }
+
+  ul[data-type="taskList"] {
+    padding-inline-start: 0;
+    list-style: none;
+  }
+
+  ul[data-type="taskList"] > li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5em;
+
+    > label {
+      display: inline-flex;
+      flex: 0 0 auto;
+      align-items: center;
+      height: 1.65em;
+      user-select: none;
+
+      input[type="checkbox"] {
+        appearance: auto;
+        width: 1em;
+        height: 1em;
+        margin: 0;
+        accent-color: var(--editor-button-active-color, #3b82f6);
+        cursor: pointer;
+
+        &:focus-visible {
+          outline: 2px solid var(--editor-button-active-color, #3b82f6);
+          outline-offset: 2px;
+        }
+      }
+    }
+
+    > div {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+
+    &[data-checked="true"] > div > p {
+      color: color-mix(in srgb, currentColor 55%, transparent);
+      text-decoration: line-through;
+    }
+  }
+
+  blockquote {
+    padding: 0.5em 0.9em;
+    border-inline-start: 3px solid color-mix(in srgb, currentColor 25%, transparent);
+    border-radius: 0 4px 4px 0;
+    background-color: color-mix(in srgb, currentColor 4%, transparent);
+  }
+
+  a {
+    color: var(--vscode-textLink-foreground, #3b82f6);
+    text-decoration: underline;
+    text-underline-offset: 0.15em;
+
+    &:hover {
+      color: var(--vscode-textLink-activeForeground, var(--editor-button-active-color, #3b82f6));
+    }
+  }
+
+  strong, b { font-weight: 600; }
+  em, i { font-style: italic; }
+  u { text-decoration: underline; }
+  s, del { text-decoration: line-through; }
+
+  mark {
+    padding: 0.05em 0.15em;
+    border-radius: 2px;
+    color: inherit;
+    background-color: var(--tt-color-highlight-yellow, #fef9c3);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  code, pre {
+    font-family: var(--vscode-editor-font-family, ui-monospace, SFMono-Regular, Consolas, monospace);
+  }
+
+  code {
+    padding: 0.1em 0.4em;
+    border-radius: 0.4em;
+    color: var(--vscode-editor-foreground, inherit);
+    background-color: color-mix(in srgb, currentColor 12%, transparent);
+    font-size: 0.92em;
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+  }
+
+  .note-code-block {
+    margin-block: var(--note-block-gap);
+    border: var(--border-width, 1px) solid color-mix(in srgb, currentColor 12%, transparent);
+    border-radius: 5px;
+    background-color: var(--vscode-textCodeBlock-background, color-mix(in srgb, currentColor 5%, transparent));
+    overflow: hidden;
+
+    pre {
+      margin: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+  }
+
+  .note-code-block-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75em;
+    padding: 0.4em 0.75em;
+    border-bottom: 1px solid color-mix(in srgb, currentColor 8%, transparent);
+    font-family: var(--vscode-font-family, sans-serif);
+    font-size: 0.8em;
+    user-select: none;
+
+    select, button {
+      max-width: 70%;
+      padding: 0.2em 0.5em;
+      border: 1px solid transparent;
+      border-radius: 3px;
+      color: inherit;
+      background: transparent;
+      font: inherit;
+      cursor: pointer;
+
+      &:hover { background: var(--vscode-toolbar-hoverBackground, color-mix(in srgb, currentColor 10%, transparent)); }
+      &:focus-visible { outline: 1px solid var(--vscode-focusBorder, #007acc); }
+    }
+
+    select option {
+      color: var(--vscode-dropdown-foreground, #333);
+      background: var(--vscode-dropdown-background, #fff);
+    }
+  }
+
+  pre {
+    padding: 0.8em 1em;
+    border: var(--border-width, 1px) solid color-mix(in srgb, currentColor 12%, transparent);
+    border-radius: 5px;
+    background-color: var(--vscode-textCodeBlock-background, color-mix(in srgb, currentColor 5%, transparent));
+    font-size: 0.92em;
+    line-height: 1.6;
+    overflow-x: auto;
+    overflow-wrap: normal;
+    white-space: pre;
+    tab-size: 2;
+
+    code {
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      font-size: inherit;
+    }
+
+    .hljs-comment,.hljs-quote {
+      color: var(--code-syntax-comment);
+      font-style: italic
+    }
+
+    .hljs-doctag,.hljs-keyword,.hljs-formula,.hljs-operator {
+      color: var(--code-syntax-keyword)
+    }
+
+    .hljs-built_in,.hljs-class .hljs-title,.hljs-literal,.hljs-number {
+      color: var(--code-syntax-literal)
+    }
+
+    .hljs-string,.hljs-regexp,.hljs-addition,.hljs-meta-string {
+      color: var(--code-syntax-string)
+    }
+
+    .hljs-variable,.hljs-template-variable,.hljs-type,.hljs-title,.hljs-selector-class,.hljs-selector-pseudo {
+      color: var(--code-syntax-variable)
+    }
+
+    .hljs-attr,.hljs-attribute,.hljs-section,.hljs-selector-attr {
+      color: var(--code-syntax-attribute)
+    }
+
+    .hljs-name,.hljs-selector-tag,.hljs-symbol,.hljs-bullet,.hljs-link,.hljs-meta,.hljs-selector-id {
+      color: var(--code-syntax-name)
+    }
+
+    .hljs-deletion {
+      color: var(--code-syntax-error)
+    }
+
+    .hljs-emphasis {
+      font-style: italic
+    }
+
+    .hljs-strong {
+      font-weight: 700
+    }
+
+    .hljs-link {
+      text-decoration: underline
+    }
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin-block: var(--note-block-gap);
+    border-radius: 4px;
+
+    &.ProseMirror-selectednode {
+      outline: 2px solid var(--editor-button-active-color, #3b82f6);
+      outline-offset: 2px;
+    }
+  }
+
+  .note-image[data-resize-container] {
+    --note-image-accent: var(--tt-brand-color-500, #3b82f6);
+
+    margin-block: var(--note-block-gap);
+
+    &[data-align="center"] { justify-content: center; }
+    &[data-align="right"] { justify-content: flex-end; }
+
+    > [data-resize-wrapper] {
+      min-width: 0;
+      max-width: 100%;
+      border-radius: 6px;
+    }
+
+    img {
+      margin: 0;
+      /* Keep the ratio when a saved image is wider than a narrow webview. */
+      height: auto !important;
+      border-radius: inherit;
+    }
+
+    [data-resize-handle] {
+      display: none;
+      width: 1.25em;
+      cursor: ew-resize;
+      touch-action: none;
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 6px;
+        height: 36%;
+        min-height: 24px;
+        max-height: 64px;
+        border-radius: 999px;
+        background-color: var(--note-image-accent);
+      }
+    }
+
+    &.ProseMirror-selectednode,
+    &[data-resize-state="true"] {
+      > [data-resize-wrapper] {
+        outline: 2px solid var(--note-image-accent);
+      }
+
+      [data-resize-handle] {
+        display: block;
+      }
+    }
+  }
+
+  &[contenteditable="false"] .note-image [data-resize-handle] {
+    display: none;
+  }
+
+  .selection {
+    background-color:rgba(38, 119, 249, 0.165);
+    box-shadow: 0 0 0 1px rgba(38, 119, 249, 0.3);
+  }
+
+  /* Trim container edges without adding gaps to nested lists or task items. */
+  > :first-child,
+  :where(blockquote, li, ul[data-type="taskList"] > li > div) > :first-child {
+    margin-block-start: 0;
+  }
+
+  > :last-child,
+  :where(blockquote, li, ul[data-type="taskList"] > li > div) > :last-child {
+    margin-block-end: 0;
+  }
+}

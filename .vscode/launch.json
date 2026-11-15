@@ -12,7 +12,7 @@
       "preLaunchTask": "dev-task",
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}",
-        "--disable-extension=lanyue.vscode-note"
+        "--disable-extension=lanyue.vsnote-editor"
       ],
       "outFiles": [
         "${workspaceFolder}/dist/extension/**/*.js"
@@ -24,7 +24,7 @@
       "request": "launch",
       "args": [
         "--extensionDevelopmentPath=${workspaceFolder}",
-        "--disable-extension=lanyue.vscode-note"
+        "--disable-extension=lanyue.vsnote-editor"
       ],
       "outFiles": [
         "${workspaceFolder}/dist/extension/**/*.js"

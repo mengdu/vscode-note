@@ -1,0 +1,33 @@
+.note-menu {
+  min-width: 13rem;
+  background-color: var(--vscode-menu-background, var(--tt-dropdown-menu-bg-color));
+  color: var(--vscode-menu-foreground, var(--tt-dropdown-menu-text-color));
+
+  .tiptap-dropdown-menu-label {
+    color: inherit;
+    opacity: 0.7;
+  }
+
+  .tiptap-button {
+    justify-content: flex-start;
+    color: inherit;
+  }
+
+  // Keep icons in sync with the VS Code menu foreground, including hover.
+  // The shared button palette otherwise uses its own light/dark icon colors.
+  .tiptap-button .tiptap-button-icon {
+    color: inherit !important;
+    flex-shrink: 0;
+  }
+
+  .tiptap-button[data-highlighted]:not([data-highlighted="false"]):not(:disabled) {
+    background: var(--vscode-menu-selectionBackground, var(--tt-button-hover-bg-color));
+    color: var(--vscode-menu-selectionForeground, inherit);
+  }
+
+  .tiptap-dropdown-menu-separator {
+    height: 1px;
+    margin: 0.375rem 0;
+    background: var(--vscode-menu-separatorBackground, var(--tt-gray-light-a-100));
+  }
+}

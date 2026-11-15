@@ -1,0 +1,16 @@
+.text-color-popover {
+  max-width: calc(100vw - 1rem);
+
+  .text-color-swatch {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin: 0 -0.175rem;
+    border: 1px solid rgb(0 0 0 / 12%);
+    border-radius: 50%;
+  }
+
+  .tiptap-button:focus-visible {
+    outline: 2px solid var(--tt-brand-color-500);
+    outline-offset: 1px;
+  }
+}
